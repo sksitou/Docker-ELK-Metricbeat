@@ -93,8 +93,6 @@ output.elasticsearch:
   # Array of hosts to connect to.
   hosts: ["localhost:9201"]
 
->>>>>>> 5c5b558f9f7cc144a74f46f0c9412712c25d1f3b
-
   # Optional protocol and basic auth credentials.
   #protocol: "https"
   #username: "elastic"

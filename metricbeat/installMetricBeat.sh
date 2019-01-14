@@ -15,7 +15,6 @@ then
     sudo dpkg -i metricbeat-6.5.1-amd64.deb
 fi
 sudo metricbeat modules enable apache mysql
-#git clone https://sitoujames@bitbucket.org/sitoujames/bitex_elk.git
 sudo cp metricbeat.yml /etc/metricbeat/metricbeat.yml
 sudo chmod go-w /etc/metricbeat/metricbeat.yml
 

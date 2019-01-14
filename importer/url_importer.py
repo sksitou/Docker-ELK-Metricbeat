@@ -2,9 +2,7 @@ import requests
 from datetime import datetime
 from elasticsearch import Elasticsearch
 
-es = Elasticsearch(host='192.168.2.4',port=9201)
-
-url = "http://192.168.2.6:8210/?keyword=Yy90d2l0dGVy&startid=0&endid=19&startdate=20180715&enddate=20181016&querytype=searchNewsParallel&lang=en"
+es = Elasticsearch(host='0.0.0.0',port=9201)
 
 r = requests.get(url).json()['res']['res']
 

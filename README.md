@@ -1,4 +1,4 @@
-# Dockers-ELK
+# Dockers-ELK-Metricbeat
 
 ELK stack that support redis and python supervisor logging. Unify all the logs in one place. And create a dashboard to monitor all processes
 
