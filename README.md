@@ -1,6 +1,6 @@
 # Dockers-ELK
 
-`ELK stack that support redis and python supervisor logging. Unify all the logs in one place. And create a dashboard to monitor all processes`
+ELK stack that support redis and python supervisor logging. Unify all the logs in one place. And create a dashboard to monitor all processes
 
 Run an old version of the ELK (Elasticsearch 5, Logstash 6, Kibana 5) stack with Docker and Docker Compose.
 Old version is selected as Elastic Watcher in X-Pack is free to use for Elacsticseach 5 and Kibana 5, but not in the latest version.
@@ -18,10 +18,9 @@ And contain installation script to install metricbeat and run ELk as service usi
 
 ## Setup 
 
- 1.Clone this repository
+1.Clone this repository  
 
-
-2. Start the ELK stack using `docker-compose`:
+2.Start the ELK stack using `docker-compose`:  
 
 ```console
 $ docker-compose up
@@ -55,5 +54,22 @@ then there will be files:
 the service will be restarted as the machine restart
 
 ## Using Logstash
-Logstash is commented out from docker-compose.yml, as it is not used in metricbeat by default.
+Logstash is commented out from docker-compose.yml, as it is not used in metricbeat by default.  
 Uncomment the session to use logstash.
+
+## Using Elastic Watcher email alert
+go to /elasticsearch/config/elasticsearch.yml  
+```yml
+## gmail to send alert
+xpack.notification.email.account:
+    gmail_account:
+        profile: gmail
+        smtp:
+            auth: true
+            starttls.enable: true
+            host: smtp.gmail.com
+            port: 587
+            user: <your email>@gmail.com
+            password: <your password>
+```
+edit user and password  
