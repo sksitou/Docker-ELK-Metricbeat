@@ -1,0 +1,9 @@
+[Unit]
+Description=Running elk docker
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/bin/run_elk.sh
+
+[Install]
+WantedBy=multi-user.target

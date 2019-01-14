@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.13
+    volumes:
+      - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      #- twitter_data:/usr/share/elasticsearch/data
+    ports:
+      - 9201:9201
+      - 9301:9301
+    environment:
+      - "ES_JAVA_OPTS:-Xms512m-Xmx512m"
+    networks:
+      - elk_twitter
+  
+#  logstash:
+#    image: docker.elastic.co/logstash/logstash-oss:6.2.2
+#    env_file:
+#      - .env
+#    volumes:
+#      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+#      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+#      #- ./logstash/twitter_template.json:/usr/share/logstash/twitter_template.json:ro
+#    ports:
+#      - 5000:5000
+#    environment:
+#      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+#    networks: 
+#      - elk_twitter
+#    depends_on:
+#      - elasticsearch
+#    command:
+#      - sudo bin/logstash-plugin install logstash-input-lumberjack
+  
+  kibana:
+    image: docker.elastic.co/kibana/kibana:5.6.13
+    volumes:
+      - ./kibana/config/:/usr/share/kibana/config:ro
+    ports:
+      - 5601:5601
+    networks:
+      - elk_twitter
+    depends_on:
+      - elasticsearch
+
+volumes:
+  twitter_data:
+    driver: local
+
+networks:
+  elk_twitter:
